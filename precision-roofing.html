@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precision Roofing, Inc. — Website Redesign Concept</title>
+<style>
+  :root{
+    --char:#1c1c1e; --char2:#2c2c30; --copper:#b06a3b; --copper2:#d08a52; --gold:#c9a15a;
+    --ink:#22242a; --muted:#63676f; --line:#e6e4e0; --bg:#ffffff; --soft:#f6f4f1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--bg)}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--copper);color:#fff;font-weight:700;padding:14px 26px;border-radius:5px;transition:.2s;border:none;cursor:pointer;font-size:15px}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(176,106,59,.4)}
+  .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--char)}
+
+  .concept{background:var(--char);color:#d8d4cd;text-align:center;font-size:13px;padding:8px 12px}
+  .concept b{color:#fff}
+
+  .topbar{background:var(--char2);color:#d8d4cd;font-size:14px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px}
+  .topbar a{color:#fff;font-weight:700}
+
+  header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 14px rgba(28,28,30,.08)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:21px;color:var(--char);letter-spacing:.3px}
+  .logo .mark{width:44px;height:44px;background:var(--char);color:var(--gold);border-radius:8px;display:grid;place-items:center;font-size:22px;font-weight:900;font-family:Georgia,serif}
+  .logo small{display:block;font-size:11px;font-weight:600;color:var(--copper);letter-spacing:2px}
+  .navlinks{display:flex;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:hover{color:var(--copper)}
+  .navcall{display:flex;align-items:center;gap:14px}
+  .navcall .num{font-weight:800;color:var(--char);font-size:17px}
+  @media(max-width:900px){.navlinks{display:none}.navcall .num{display:none}}
+
+  .hero{position:relative;background:linear-gradient(120deg,#1c1c1e 0%,#2c2c30 55%,#4a3a2e 130%);color:#fff;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="16"><path d="M0 16 L14 0 L28 16" fill="none" stroke="white" stroke-width="1" opacity="0.05"/></svg>')}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:74px 22px}
+  .badge{display:inline-block;background:rgba(201,161,90,.16);color:var(--gold);border:1px solid rgba(201,161,90,.5);padding:6px 14px;border-radius:4px;font-size:13px;font-weight:700;margin-bottom:18px;letter-spacing:.5px}
+  .hero h1{font-size:44px;line-height:1.12;font-weight:800;margin-bottom:16px;font-family:Georgia,'Times New Roman',serif}
+  .hero h1 span{color:var(--copper2)}
+  .hero p{font-size:17px;color:#ded9d1;margin-bottom:26px;max-width:520px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap}
+  .trust div{font-size:14px;color:#d8d4cd}
+  .trust b{display:block;font-size:24px;color:#fff;font-weight:800}
+
+  .quote{background:#fff;color:var(--ink);border-radius:10px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.32)}
+  .quote h3{font-size:20px;color:var(--char);margin-bottom:4px}
+  .quote p.sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .quote label{font-size:13px;font-weight:600;display:block;margin-bottom:5px}
+  .quote input,.quote select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:5px;margin-bottom:14px;font-size:14px;font-family:inherit}
+  .quote .btn{width:100%;text-align:center}
+  .quote small{display:block;text-align:center;color:var(--muted);margin-top:10px;font-size:12px}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}.hero h1{font-size:34px}}
+
+  .badges{background:var(--soft);border-bottom:1px solid var(--line)}
+  .badges .wrap{display:flex;justify-content:space-between;gap:18px;padding:22px;flex-wrap:wrap}
+  .badges div{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--char);font-size:15px}
+  .badges .ic{width:34px;height:34px;background:#efe9e1;border-radius:6px;display:grid;place-items:center;color:var(--copper);font-size:18px}
+
+  section{padding:74px 0}
+  .eyebrow{color:var(--copper);font-weight:800;letter-spacing:2px;font-size:13px;text-transform:uppercase;text-align:center}
+  .h2{font-size:34px;font-weight:800;color:var(--char);text-align:center;margin:8px 0 12px;font-family:Georgia,serif}
+  .lead{text-align:center;color:var(--muted);max-width:660px;margin:0 auto 46px;font-size:16px}
+
+  .services{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{border:1px solid var(--line);border-radius:8px;padding:24px;transition:.25s;background:#fff;text-align:center}
+  .card:hover{border-color:var(--copper);box-shadow:0 14px 34px rgba(28,28,30,.12);transform:translateY(-4px)}
+  .card .ci{width:50px;height:50px;background:linear-gradient(135deg,var(--char),var(--copper));border-radius:9px;display:grid;place-items:center;font-size:23px;margin:0 auto 14px}
+  .card h4{font-size:16px;color:var(--char);margin-bottom:6px}
+  .card p{color:var(--muted);font-size:14px}
+  @media(max-width:900px){.services{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.services{grid-template-columns:1fr}}
+
+  .why{background:var(--char);color:#fff}
+  .why .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .why h2{font-size:32px;font-weight:800;margin-bottom:18px;font-family:Georgia,serif}
+  .why h2 span{color:var(--copper2)}
+  .why ul{list-style:none;margin-top:18px}
+  .why li{display:flex;gap:12px;margin-bottom:14px;color:#ded9d1;font-size:16px}
+  .why li b{color:#fff}
+  .check{color:var(--gold);font-weight:900;font-size:18px}
+  .statbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:26px;text-align:center}
+  .statbox b{display:block;font-size:34px;color:var(--copper2);font-weight:800}
+  .statbox span{font-size:14px;color:#d8d4cd}
+  @media(max-width:900px){.why .grid{grid-template-columns:1fr}}
+
+  .mfr{background:var(--soft);text-align:center}
+  .mfrrow{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:6px}
+  .mfr .m{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 22px;font-weight:700;color:var(--char2);font-size:15px}
+
+  .final{background:linear-gradient(120deg,var(--copper),#7a4a2a);color:#fff;text-align:center}
+  .final h2{font-size:33px;font-weight:800;margin-bottom:12px;font-family:Georgia,serif}
+  .final p{color:#f2e7dd;margin-bottom:26px;font-size:17px}
+  .final .num{font-size:29px;font-weight:800;display:block;margin-top:16px}
+
+  footer{background:#161617;color:#9a968e;padding:50px 0 26px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:30px}
+  .flogo{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:20px;margin-bottom:14px;font-family:Georgia,serif}
+  .flogo .mark{width:40px;height:40px;background:var(--copper);color:#fff;border-radius:8px;display:grid;place-items:center;font-weight:900}
+  footer h5{color:#fff;font-size:15px;margin-bottom:14px}
+  footer a{display:block;color:#9a968e;margin-bottom:8px}
+  footer a:hover{color:#fff}
+  .fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;color:#6f6b63;font-size:13px}
+  @media(max-width:900px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="concept">🎨 <b>Website Redesign Concept</b> for Precision Roofing, Inc. — prepared as a free preview. Not the live site.</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🏛️ Serving Central Texas since 2001 · Commercial &amp; Residential</span>
+    <span>Call: <a href="tel:5122513457">(512) 251-3457</a></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><span class="mark">P</span><span>Precision Roofing<small>EST. 2001 · AUSTIN, TX</small></span></div>
+      <div class="navlinks">
+        <a href="#services">Roof Systems</a>
+        <a href="#why">Why Us</a>
+        <a href="#mfr">Manufacturers</a>
+        <a href="#quote">Free Estimate</a>
+      </div>
+      <div class="navcall">
+        <span class="num">(512) 251-3457</span>
+        <a href="#quote" class="btn">Get a Free Estimate</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div>
+      <span class="badge">SERVING CENTRAL TEXAS SINCE 2001</span>
+      <h1>Craftsmanship in Every <span>Roof We Build</span></h1>
+      <p>From clay tile and slate to standing seam metal and custom fabrication, Precision Roofing has met and exceeded the highest standards in Central Texas for over two decades.</p>
+      <div class="cta">
+        <a href="#quote" class="btn">Request a Free Estimate</a>
+        <a href="tel:5122513457" class="btn btn-ghost">📞 (512) 251-3457</a>
+      </div>
+      <div class="trust">
+        <div><b>20+</b>Years in Austin</div>
+        <div><b>9</b>Roof Systems</div>
+        <div><b>100%</b>Custom Fabrication</div>
+      </div>
+    </div>
+    <div class="quote" id="quote">
+      <h3>Request Your Free Estimate</h3>
+      <p class="sub">Residential or commercial — we'll get back to you promptly.</p>
+      <form onsubmit="event.preventDefault();this.querySelector('.btn').textContent='✔ Request Sent!';">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" required>
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(512) 000-0000" required>
+        <label>Roof Type</label>
+        <select>
+          <option>Composition Shingles</option>
+          <option>Standing Seam Metal</option>
+          <option>Clay Tile</option>
+          <option>Slate</option>
+          <option>Concrete Tile</option>
+          <option>Single Ply / Modified Bitumen (Commercial)</option>
+          <option>Custom Metal Fabrication</option>
+        </select>
+        <button class="btn" type="submit">Get My Free Estimate →</button>
+        <small>🔒 No obligation. Expert knowledge, incomparable results.</small>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="badges">
+  <div class="wrap">
+    <div><span class="ic">🏛️</span> Since 2001</div>
+    <div><span class="ic">🏠</span> Residential &amp; Commercial</div>
+    <div><span class="ic">🔨</span> Custom Sheet Metal</div>
+    <div><span class="ic">⭐</span> Premium Materials</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="eyebrow">Roof Systems</p>
+    <h2 class="h2">Every Roofing System, Expertly Installed</h2>
+    <p class="lead">We install and fabricate the full range of residential and commercial roof systems — matched to your building, your look, and Central Texas weather.</p>
+    <div class="services">
+      <div class="card"><div class="ci">🪨</div><h4>Slate</h4><p>Timeless, natural slate roofing built to last generations.</p></div>
+      <div class="card"><div class="ci">🧱</div><h4>Clay &amp; Concrete Tile</h4><p>Classic tile systems with lasting durability and curb appeal.</p></div>
+      <div class="card"><div class="ci">🔩</div><h4>Standing Seam Metal</h4><p>Sleek, weather-tight metal roofing in a range of finishes.</p></div>
+      <div class="card"><div class="ci">🏘️</div><h4>Composition Shingles</h4><p>Reliable, cost-effective shingle roofing for any home.</p></div>
+      <div class="card"><div class="ci">🏢</div><h4>Single Ply</h4><p>Durable commercial single-ply membrane systems.</p></div>
+      <div class="card"><div class="ci">🛢️</div><h4>Modified Bitumen</h4><p>Proven flat and low-slope commercial roofing.</p></div>
+      <div class="card"><div class="ci">🧰</div><h4>Exterior Wall Cladding</h4><p>Flat lock, flush panel, lap siding &amp; standing seam in almost any material.</p></div>
+      <div class="card"><div class="ci">⚒️</div><h4>Custom Metal Fabrication</h4><p>Chimney caps, turrets, domes &amp; brake metal in copper, zinc, stainless &amp; more.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Why Central Texas Chooses <span>Precision Roofing</span></h2>
+        <p style="color:#ded9d1">We pride ourselves on providing excellent service, expert knowledge, and incomparable results to every client — meeting and exceeding the highest standards in the industry since 2001.</p>
+        <ul>
+          <li><span class="check">✔</span><span><b>20+ years in Central Texas</b> — deep local roofing expertise.</span></li>
+          <li><span class="check">✔</span><span><b>Full range of systems</b> — tile, slate, metal, shingle &amp; commercial.</span></li>
+          <li><span class="check">✔</span><span><b>In-house metal fabrication</b> — custom copper, zinc &amp; stainless work.</span></li>
+          <li><span class="check">✔</span><span><b>Premium manufacturers</b> — Boral, Berridge, CertainTeed, Versico &amp; more.</span></li>
+        </ul>
+      </div>
+      <div class="statbox">
+        <div><b>2001</b><span>Established in Austin</span></div>
+        <div><b>9</b><span>Roof Systems</span></div>
+        <div><b>Custom</b><span>Metal Fabrication</span></div>
+        <div><b>Res +</b><span>Commercial</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mfr" id="mfr">
+  <div class="wrap">
+    <p class="eyebrow">Trusted Manufacturers</p>
+    <h2 class="h2">We Build With the Best Materials</h2>
+    <p class="lead">Precision Roofing partners with the industry's leading manufacturers to guarantee lasting quality on every project.</p>
+    <div class="mfrrow">
+      <div class="m">Boral</div><div class="m">Berridge</div><div class="m">CertainTeed</div>
+      <div class="m">Sheffield Metals</div><div class="m">Versico</div><div class="m">Crown</div>
+      <div class="m">MCA Tile</div><div class="m">WeatherBond</div><div class="m">Mule-Hide</div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Planning a New Roof in Central Texas?</h2>
+    <p>Get a free, no-obligation estimate from Austin's trusted roofing craftsmen.</p>
+    <a href="#quote" class="btn">Request My Free Estimate</a>
+    <a href="tel:5122513457" class="num">📞 (512) 251-3457</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="flogo"><span class="mark">P</span> Precision Roofing, Inc.</div>
+        <p style="max-width:340px">Commercial &amp; residential roofing, exterior wall cladding, and custom sheet metal fabrication in Austin and Central Texas since 2001.</p>
+      </div>
+      <div>
+        <h5>Roof Systems</h5>
+        <a href="#">Slate &amp; Tile</a>
+        <a href="#">Standing Seam Metal</a>
+        <a href="#">Composition Shingles</a>
+        <a href="#">Commercial Roofing</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:5122513457">📞 (512) 251-3457</a>
+        <a href="#">📍 9317 McNeil Rd, Austin, TX</a>
+        <a href="#">📠 Fax (512) 251-3459</a>
+      </div>
+    </div>
+    <div class="fbot">Redesign concept prepared for Precision Roofing, Inc. · Demo only — not the live website.</div>
+  </div>
+</footer>
+
+</body>
+</html>

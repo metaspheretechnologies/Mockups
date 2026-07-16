@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Ox Roofing — Website Redesign Concept</title>
+<style>
+  :root{
+    --navy:#0f2740; --blue:#1d4e89; --sky:#2f80ed; --accent:#f5a623;
+    --ink:#1a2432; --muted:#5b6b7d; --line:#e4e9ef; --bg:#ffffff; --soft:#f4f7fb;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--bg)}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--accent);color:#1a2432;font-weight:700;padding:14px 26px;border-radius:8px;transition:.2s;border:none;cursor:pointer;font-size:15px}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,166,35,.35)}
+  .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--navy)}
+
+  .concept{background:var(--navy);color:#cfe0f5;text-align:center;font-size:13px;padding:8px 12px;letter-spacing:.3px}
+  .concept b{color:#fff}
+
+  .topbar{background:var(--navy);color:#dbe6f4;font-size:14px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px}
+  .topbar a{color:#fff;font-weight:600}
+
+  header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 14px rgba(15,39,64,.07)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;color:var(--navy)}
+  .logo img.logomark{height:50px;width:auto;display:block}
+  header .logo img.logomark{filter:brightness(0) saturate(100%) invert(19%) sepia(58%) saturate(1100%) hue-rotate(184deg) brightness(94%) contrast(92%)}
+  footer .logo img.logomark{filter:none}
+  .navlinks{display:flex;gap:26px;font-weight:600;font-size:15px;color:var(--ink)}
+  .navlinks a:hover{color:var(--blue)}
+  .navcall{display:flex;align-items:center;gap:14px}
+  .navcall .num{font-weight:800;color:var(--navy);font-size:17px}
+  @media(max-width:860px){.navlinks{display:none}.navcall .num{display:none}}
+
+  .hero{position:relative;background:linear-gradient(135deg,#0f2740 0%,#1d4e89 100%);color:#fff;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M0 30 L30 0 L60 30 L30 60 Z" fill="none" stroke="white" stroke-width="1" opacity="0.05"/></svg>');opacity:.6}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:70px 22px}
+  .badge{display:inline-block;background:rgba(245,166,35,.16);color:var(--accent);border:1px solid rgba(245,166,35,.4);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:700;margin-bottom:18px}
+  .hero h1{font-size:44px;line-height:1.12;font-weight:800;margin-bottom:16px}
+  .hero h1 span{color:var(--accent)}
+  .hero p{font-size:17px;color:#d6e2f2;margin-bottom:26px;max-width:520px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+  .trust div{font-size:14px;color:#cfe0f5}
+  .trust b{display:block;font-size:26px;color:#fff;font-weight:800}
+
+  .quote{background:#fff;color:var(--ink);border-radius:16px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .quote h3{font-size:20px;color:var(--navy);margin-bottom:4px}
+  .quote p.sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .quote label{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:5px}
+  .quote input,.quote select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;margin-bottom:14px;font-size:14px;font-family:inherit}
+  .quote .btn{width:100%;text-align:center}
+  .quote small{display:block;text-align:center;color:var(--muted);margin-top:10px;font-size:12px}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}.hero h1{font-size:34px}}
+
+  .badges{background:var(--soft);border-bottom:1px solid var(--line)}
+  .badges .wrap{display:flex;justify-content:space-between;gap:20px;padding:22px;flex-wrap:wrap}
+  .badges div{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:15px}
+  .badges .ic{width:34px;height:34px;background:#e2ebf7;border-radius:8px;display:grid;place-items:center;color:var(--blue);font-size:18px}
+
+  section{padding:72px 0}
+  .eyebrow{color:var(--sky);font-weight:800;letter-spacing:1.5px;font-size:13px;text-transform:uppercase;text-align:center}
+  .h2{font-size:34px;font-weight:800;color:var(--navy);text-align:center;margin:8px 0 12px}
+  .lead{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 46px;font-size:16px}
+
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:30px;transition:.25s;background:#fff}
+  .card:hover{border-color:var(--sky);box-shadow:0 14px 34px rgba(29,78,137,.12);transform:translateY(-4px)}
+  .card .ci{width:56px;height:56px;background:linear-gradient(135deg,var(--blue),var(--sky));border-radius:12px;display:grid;place-items:center;font-size:26px;margin-bottom:18px}
+  .card h4{font-size:19px;color:var(--navy);margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+  @media(max-width:860px){.services{grid-template-columns:1fr}}
+
+  .why{background:var(--navy);color:#fff}
+  .why .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .why h2{font-size:32px;font-weight:800;margin-bottom:18px}
+  .why h2 span{color:var(--accent)}
+  .why ul{list-style:none;margin-top:18px}
+  .why li{display:flex;gap:12px;margin-bottom:14px;color:#d6e2f2;font-size:16px}
+  .why li b{color:#fff}
+  .check{color:var(--accent);font-weight:900;font-size:18px}
+  .statbox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:26px;text-align:center}
+  .statbox b{display:block;font-size:38px;color:var(--accent);font-weight:800}
+  .statbox span{font-size:14px;color:#cfe0f5}
+  @media(max-width:860px){.why .grid{grid-template-columns:1fr}}
+
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px}
+  .stars{color:var(--accent);font-size:17px;margin-bottom:10px}
+  .rev p{font-size:15px;color:var(--ink);margin-bottom:14px}
+  .rev b{color:var(--navy)}
+  .google{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:40px;font-weight:700;color:var(--navy)}
+  .google .g{font-size:22px}
+  @media(max-width:860px){.reviews{grid-template-columns:1fr}}
+
+  .final{background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff;text-align:center}
+  .final h2{font-size:34px;font-weight:800;margin-bottom:12px}
+  .final p{color:#e4eefb;margin-bottom:26px;font-size:17px}
+  .final .num{font-size:30px;font-weight:800;display:block;margin-top:16px}
+
+  footer{background:#0b1c30;color:#9fb3c9;padding:50px 0 26px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:30px}
+  footer h5{color:#fff;font-size:15px;margin-bottom:14px;letter-spacing:.5px}
+  footer a{display:block;color:#9fb3c9;margin-bottom:8px}
+  footer a:hover{color:#fff}
+  .fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;color:#6f8299;font-size:13px}
+  @media(max-width:860px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="concept">🎨 <b>Website Redesign Concept</b> for Blue Ox Roofing — prepared as a free preview. Not the live site.</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>⭐ Serving Niagara Falls, Buffalo, Amherst &amp; all of WNY</span>
+    <span>Mon–Fri 8:00 AM – 4:30 PM · <a href="tel:7167316671">(716) 731-6671</a></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><img class="logomark" src="https://lirp.cdn-website.com/dec50a6d/dms3rep/multi/opt/Business-logo-168w.png" alt="Blue Ox Roofing logo"></div>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#why">Why Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#quote">Free Estimate</a>
+      </div>
+      <div class="navcall">
+        <span class="num">(716) 731-6671</span>
+        <a href="#quote" class="btn">Get a Free Quote</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div>
+      <span class="badge">✔ Over 23 Years of Roofing Experience</span>
+      <h1>Strong, Reliable Roofs for <span>Western New York</span> Homes &amp; Businesses</h1>
+      <p>Commercial and residential roofing done right the first time — backed by manufacturer warranties on every new tear-off and re-roof. Free, no-pressure estimates.</p>
+      <div class="cta">
+        <a href="#quote" class="btn">Get My Free Estimate</a>
+        <a href="tel:7167316671" class="btn btn-ghost">📞 Call (716) 731-6671</a>
+      </div>
+      <div class="trust">
+        <div><b>23+</b>Years in WNY</div>
+        <div><b>5.0★</b>Customer Reviews</div>
+        <div><b>100%</b>Warranty-Backed</div>
+      </div>
+    </div>
+    <div class="quote" id="quote">
+      <h3>Request Your Free Estimate</h3>
+      <p class="sub">Takes 30 seconds. We'll call you back same day.</p>
+      <form onsubmit="event.preventDefault();this.querySelector('.btn').textContent='✔ Request Sent!';">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Smith" required>
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(716) 000-0000" required>
+        <label>Service Needed</label>
+        <select>
+          <option>Residential Roof Repair</option>
+          <option>Residential Roof Replacement</option>
+          <option>Commercial Roofing</option>
+          <option>Commercial Roof Maintenance</option>
+          <option>Storm / Leak Emergency</option>
+        </select>
+        <button class="btn" type="submit">Get My Free Estimate →</button>
+        <small>🔒 No spam. No obligation. Just an honest quote.</small>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="badges">
+  <div class="wrap">
+    <div><span class="ic">🛡️</span> Licensed &amp; Insured</div>
+    <div><span class="ic">📋</span> Manufacturer Warranties</div>
+    <div><span class="ic">🏗️</span> Commercial &amp; Residential</div>
+    <div><span class="ic">⚡</span> Same-Day Callbacks</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="eyebrow">What We Do</p>
+    <h2 class="h2">Roofing Services Built to Last</h2>
+    <p class="lead">From full commercial replacements to a leaky shingle on your home, our trained technicians use commercial-grade materials on every job.</p>
+    <div class="services">
+      <div class="card">
+        <div class="ci">🏢</div>
+        <h4>Commercial Roofing</h4>
+        <p>Full commercial roof replacements and repairs using durable, commercial-grade systems installed by trained crews.</p>
+      </div>
+      <div class="card">
+        <div class="ci">🏠</div>
+        <h4>Residential Roofing</h4>
+        <p>Repairs and full re-roofs for your home — done cleanly, on time, and backed by manufacturer warranties.</p>
+      </div>
+      <div class="card">
+        <div class="ci">🔧</div>
+        <h4>Commercial Roof Maintenance</h4>
+        <p>Proactive maintenance plans that keep your roof stronger, longer and catch small problems before they get expensive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Why WNY Trusts <span>Blue Ox Roofing</span></h2>
+        <p style="color:#d6e2f2">A damaged roof leads to big problems fast. We inspect honestly, tell you whether to repair or replace, and minimize property damage — no upselling.</p>
+        <ul>
+          <li><span class="check">✔</span><span><b>23+ years of experience</b> — we've seen it all and fix it right.</span></li>
+          <li><span class="check">✔</span><span><b>Warranties on every job</b> — manufacturer-backed tear-offs &amp; re-roofs.</span></li>
+          <li><span class="check">✔</span><span><b>Honest inspections</b> — we tell you if a repair beats a replacement.</span></li>
+          <li><span class="check">✔</span><span><b>Spotless cleanup</b> — no leftover nails or debris, guaranteed.</span></li>
+        </ul>
+      </div>
+      <div class="statbox">
+        <div><b>23+</b><span>Years Roofing WNY</span></div>
+        <div><b>5.0★</b><span>Average Review</span></div>
+        <div><b>4</b><span>Cities Served</span></div>
+        <div><b>100%</b><span>Warranty-Backed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <p class="eyebrow">Real Customers</p>
+    <h2 class="h2">What Your Neighbors Say</h2>
+    <div class="google"><span class="g">🌟</span> Rated 5.0 from verified local reviews</div>
+    <div class="reviews">
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"They did a wonderful job on my roof. Punctual, the cleanup was amazing — no left-behind nails or debris. The quality of the work was incredible."</p>
+        <b>— Karen M.</b>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Thorough, personable, straight-forward pitch, followed by prompt, informative completion of work. We got our money's worth. Would recommend to anyone!"</p>
+        <b>— Bob &amp; Pat S.</b>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Very professional company. Excellent work and communication. Would highly recommend!"</p>
+        <b>— Laura R.</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Is the Roof Over Your Head Safe?</h2>
+    <p>Get a free, no-obligation estimate from Western New York's trusted roofing team.</p>
+    <a href="#quote" class="btn">Request My Free Estimate</a>
+    <a href="tel:7167316671" class="num">📞 (716) 731-6671</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:14px"><img class="logomark" src="https://lirp.cdn-website.com/dec50a6d/dms3rep/multi/opt/Business-logo-168w.png" alt="Blue Ox Roofing logo"></div>
+        <p style="max-width:340px">Commercial &amp; residential roofing across Niagara Falls, Buffalo, Amherst and all of Western New York. Over 23 years of trusted service.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Commercial Roofing</a>
+        <a href="#">Residential Roofing</a>
+        <a href="#">Roof Maintenance</a>
+        <a href="#">Roof Repair</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:7167316671">📞 (716) 731-6671
