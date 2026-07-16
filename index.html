@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Mockup Previews</title>
+<style>
+  :root{--bg:#0d1420;--panel:#151f30;--line:#243447;--txt:#e7edf4;--muted:#93a4b7;--accent:#3b82f6;--accent2:#22c55e}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:
+    radial-gradient(900px 500px at 80% -10%,rgba(59,130,246,.16),transparent 60%),
+    radial-gradient(900px 500px at 0% 120%,rgba(34,197,94,.14),transparent 60%),var(--bg);
+    color:var(--txt);min-height:100vh;line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:70px 24px}
+  .head{margin-bottom:44px}
+  .eyebrow{color:var(--accent2);font-weight:800;letter-spacing:3px;font-size:12px;text-transform:uppercase}
+  h1{font-size:40px;font-weight:900;letter-spacing:-.5px;margin:8px 0 10px}
+  .head p{color:var(--muted);font-size:16px;max-width:560px}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .card{display:flex;align-items:center;gap:22px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px 26px;transition:.2s;text-decoration:none;color:inherit}
+  .card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+  .swatch{width:56px;height:56px;border-radius:10px;flex-shrink:0;display:grid;place-items:center;font-size:26px;font-weight:900;color:#fff}
+  .c1{background:linear-gradient(135deg,#1d4e89,#2f80ed)}
+  .c2{background:linear-gradient(135deg,#1e83d3,#2eab46)}
+  .c3{background:linear-gradient(135deg,#1c1c1e,#b06a3b)}
+  .info{flex:1}
+  .info h3{font-size:19px;font-weight:800;margin-bottom:2px}
+  .info span{color:var(--muted);font-size:14px}
+  .go{color:var(--accent);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+  .foot{margin-top:40px;color:#5f7186;font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+  @media(max-width:560px){.card{flex-wrap:wrap}.go{width:100%}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Website Redesign Concepts</p>
+      <h1>Client Mockup Previews</h1>
+      <p>Live, interactive redesign concepts built for each prospect. Click any card to open the full preview.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="blue-ox-roofing.html">
+        <div class="swatch c1">🐂</div>
+        <div class="info"><h3>Blue Ox Roofing</h3><span>Niagara Falls, NY · Commercial &amp; Residential Roofing</span></div>
+        <span class="go">Open Preview →</span>
+      </a>
+      <a class="card" href="united-thermal-systems.html">
+        <div class="swatch c2">UTS</div>
+        <div class="info"><h3>United Thermal Systems</h3><span>Niagara Falls, NY · Spray Foam Roofing &amp; Fireproofing</span></div>
+        <span class="go">Open Preview →</span>
+      </a>
+      <a class="card" href="precision-roofing.html">
+        <div class="swatch c3">P</div>
+        <div class="info"><h3>Precision Roofing, Inc.</h3><span>Austin, TX · Tile, Slate &amp; Custom Metal Roofing</span></div>
+        <span class="go">Open Preview →</span>
+      </a>
+      <a class="card" href="md-roofing.html">
+        <div class="swatch" style="background:linear-gradient(135deg,#c8202f,#23262b)">MD</div>
+        <div class="info"><h3>M.D. Roofing &amp; Construction</h3><span>Frisco, TX · Residential Roofing &amp; Storm Damage</span></div>
+        <span class="go">Open Preview →</span>
+      </a>
+      <a class="card" href="wrangler-roofing.html">
+        <div class="swatch" style="background:linear-gradient(135deg,#a15a2b,#274156)">WRI</div>
+        <div class="info"><h3>Wrangler Roofing, Inc.</h3><span>Forney, TX · Commercial Roofing</span></div>
+        <span class="go">Open Preview →</span>
+      </a>
+      <a class="card" href="schulte-roofing.html">
+        <div class="swatch" style="background:linear-gradient(135deg,#c9a24b,#0e3b2e)">S</div>
+        <div class="info"><h3>Schulte Roofing®</h3><span>Navasota, TX · Award-Winning Commercial &amp; Residential</span></div>
+        <span class="go">Open Preview →</span>
+      </a>
+    </div>
+    <div class="foot">Redesign concepts prepared as free previews · Demo only — not the live client websites.</div>
+  </div>
+</body>
+</html>
