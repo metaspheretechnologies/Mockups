@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irwin Roofing — Website Redesign Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#100e0c; --espresso:#1a1613; --esp2:#221c17; --brown:#2c231b;
+    --gold:#c9a24b; --gold2:#e2c377; --tan:#cbb79a; --cream:#f5f0e6; --soft:#ece3d3;
+    --ink:#211a13; --muted:#8a7f70; --dmuted:#a99c88; --line:rgba(201,162,75,.22); --bg:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.65;background:var(--black);overflow-x:hidden}
+  h1,h2,h3,.h2,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.2px}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 30px}
+  .btn{position:relative;display:inline-block;background:var(--gold);color:var(--black);font-weight:600;padding:16px 36px;border-radius:2px;border:none;cursor:pointer;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(201,162,75,.4)}
+  .btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .55s}
+  .btn:hover::after{left:130%}
+  .btn-out{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
+  .btn-out:hover{background:var(--gold);color:var(--black)}
+  .eyebrow{color:var(--gold);font-weight:600;letter-spacing:4px;font-size:12px;text-transform:uppercase;display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+  .center .eyebrow::before{display:none}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+  .concept{background:#000;color:#c9bda8;text-align:center;font-size:12.5px;padding:9px 12px;letter-spacing:.5px}
+  .concept b{color:var(--gold2)}
+
+  .topbar{background:var(--espresso);color:#a99c88;font-size:12.5px;border-bottom:1px solid var(--line);letter-spacing:.4px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:46px;gap:14px;flex-wrap:wrap}
+  .topbar a{color:var(--gold2);font-weight:600}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(16,14,12,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:96px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{height:66px;filter:brightness(0) invert(1);opacity:1}
+  .logo b{font-family:'Playfair Display',serif;font-size:28px;color:var(--cream);display:none;letter-spacing:1px}
+  .navlinks{display:flex;gap:32px;font-weight:500;font-size:13px;color:var(--dmuted);text-transform:uppercase;letter-spacing:1.2px}
+  .navlinks a{position:relative;transition:color .2s}
+  .navlinks a:hover{color:var(--gold2)}
+  .navcta{display:flex;align-items:center;gap:18px}
+  .navcta .num{font-weight:600;color:var(--cream);font-size:17px;letter-spacing:.5px}
+  @media(max-width:1000px){.navlinks{display:none}.navcta .num{display:none}}
+
+  /* HERO */
+  .hero{position:relative;color:var(--cream);overflow:hidden;padding:0;min-height:90vh;display:flex;align-items:center;background:var(--black)}
+  .hero .bg{position:absolute;inset:0;background:url('https://static.showit.co/800/C9rLrN8MT46emKIIlYtPqg/shared/ronnie-george-z11gbBo13ro-unsplash.jpg') center/cover no-repeat;opacity:.32}
+  .hero .veil{position:absolute;inset:0;background:radial-gradient(1200px 700px at 20% 30%,rgba(16,14,12,.7),rgba(16,14,12,.94))}
+  .hero .fr{position:absolute;inset:26px;border:1px solid var(--line);pointer-events:none;z-index:2}
+  .hero .wrap{position:relative;z-index:3;padding:90px 30px;max-width:1200px}
+  .hero .in{max-width:720px}
+  .hero .eyebrow{margin-bottom:26px;animation:fadeUp .8s both}
+  .hero h1{font-size:76px;line-height:1.02;font-weight:600;margin-bottom:24px;animation:fadeUp .9s .1s both}
+  .hero h1 em{font-style:italic;color:var(--gold2)}
+  .hero p{font-size:19px;color:#d7ccbb;max-width:540px;margin-bottom:34px;animation:fadeUp .9s .25s both}
+  .hero .cta{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .9s .4s both}
+  @media(max-width:900px){.hero h1{font-size:46px}.hero .fr{inset:14px}}
+
+  /* stats — luxury thin line */
+  .stats{background:var(--espresso);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stats .s{padding:46px 24px;text-align:center;border-right:1px solid var(--line)}
+  .stats .s:last-child{border-right:none}
+  .stats b{display:block;font-size:52px;color:var(--gold2);font-family:'Playfair Display',serif;line-height:1;font-weight:600}
+  .stats span{font-size:12px;color:var(--dmuted);letter-spacing:2px;text-transform:uppercase;margin-top:12px;display:block}
+  @media(max-width:820px){.stats .wrap{grid-template-columns:1fr 1fr}.stats .s:nth-child(2){border-right:none}.stats .s:nth-child(1),.stats .s:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  section{padding:110px 0}
+  .h2{font-size:48px;color:var(--cream);margin:16px 0 18px;line-height:1.08;font-weight:600}
+  .lead{color:var(--dmuted);max-width:640px;font-size:16px}
+  .center{text-align:center}.center .lead{margin:0 auto 60px}.center .eyebrow{justify-content:center}
+
+  /* advocate */
+  .adv .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .adv .imgwrap{position:relative;border-radius:2px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(150deg,var(--brown),var(--black))}
+  .adv .imgwrap img{width:100%;height:100%;object-fit:cover}
+  .adv .imgwrap::after{content:"";position:absolute;inset:16px;border:1px solid rgba(255,255,255,.25);pointer-events:none}
+  .adv h2 em{font-style:italic;color:var(--gold2)}
+  .adv p{color:#b7ac9b;margin-bottom:16px;font-size:16.5px}
+  .adv .ck{list-style:none;margin-top:10px}
+  .adv .ck li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);color:var(--tan);font-size:15.5px}
+  .adv .ck li:last-child{border-bottom:none}
+  .adv .ck .i{color:var(--gold);font-weight:700}
+  @media(max-width:900px){.adv .grid{grid-template-columns:1fr;gap:40px}}
+
+  /* process — luxury numerals */
+  .proc-sec{background:var(--espresso);border-top:1px solid var(--line)}
+  .proc{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:step;margin-top:20px}
+  .step{padding:44px 40px;border-right:1px solid var(--line);transition:background .3s}
+  .step:last-child{border-right:none}
+  .step:hover{background:var(--esp2)}
+  .step .n{counter-increment:step;font-family:'Playfair Display',serif;font-size:40px;color:var(--gold);line-height:1;font-style:italic}
+  .step .n::before{content:"0" counter(step)" —"}
+  .step h4{font-family:'Playfair Display',serif;font-size:26px;color:var(--cream);margin:14px 0 12px;font-weight:600}
+  .step p{color:var(--dmuted);font-size:15px}
+  @media(max-width:900px){.proc{grid-template-columns:1fr}.step{border-right:none;border-bottom:1px solid var(--line)}}
+
+  /* values */
+  .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:12px}
+  .val{display:flex;gap:24px;padding:36px;background:var(--esp2);border:1px solid var(--line);border-radius:2px;transition:transform .25s,border-color .25s}
+  .val:hover{transform:translateY(-6px);border-color:var(--gold)}
+  .val .ic{font-size:34px;flex-shrink:0}
+  .val h4{font-family:'Playfair Display',serif;font-size:24px;color:var(--cream);margin-bottom:8px;font-weight:600}
+  .val p{color:var(--dmuted);font-size:15px}
+  @media(max-width:760px){.vgrid{grid-template-columns:1fr}}
+
+  /* founder — editorial */
+  .founder{background:var(--espresso);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .founder .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+  .founder .ph{position:relative;border-radius:2px;overflow:hidden;aspect-ratio:4/5;max-width:400px;background:linear-gradient(150deg,var(--brown),var(--black))}
+  .founder .ph img{width:100%;height:100%;object-fit:cover}
+  .founder .ph::after{content:"";position:absolute;inset:16px;border:1px solid rgba(255,255,255,.25)}
+  .founder .quote{font-family:'Playfair Display',serif;font-size:34px;line-height:1.3;color:var(--cream);font-style:italic;margin-bottom:22px;font-weight:500}
+  .founder .quote span{color:var(--gold2)}
+  .founder p{color:#b7ac9b;margin-bottom:14px;font-size:16px}
+  .founder .name{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold2);margin-top:18px}
+  .founder .name small{display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+  @media(max-width:900px){.founder .grid{grid-template-columns:1fr;gap:40px}.founder .ph{margin:0 auto}}
+
+  /* reviews */
+  .revgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:960px;margin:0 auto}
+  .rev{padding:40px;background:var(--esp2);border:1px solid var(--line);border-radius:2px;position:relative}
+  .rev .q{font-family:'Playfair Display',serif;font-size:60px;color:var(--gold);line-height:.6;opacity:.5}
+  .rev h4{font-family:'Playfair Display',serif;font-size:22px;color:var(--cream);margin:6px 0 12px;font-weight:600}
+  .rev p{font-size:16px;color:var(--tan);font-style:italic}
+  @media(max-width:760px){.revgrid{grid-template-columns:1fr}}
+
+  /* partners */
+  .partners{background:var(--espresso);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0;overflow:hidden}
+  .ptrack{display:inline-flex;gap:70px;align-items:center;animation:marquee 28s linear infinite;white-space:nowrap}
+  .ptrack img{height:44px;width:auto;filter:brightness(0) invert(1) grayscale(1);opacity:.5;transition:.3s}
+  .ptrack img:hover{opacity:.95}
+
+  /* final */
+  .final{position:relative;text-align:center;overflow:hidden;background:var(--black)}
+  .final .bg{position:absolute;inset:0;background:url('https://static.showit.co/800/C9rLrN8MT46emKIIlYtPqg/shared/ronnie-george-z11gbBo13ro-unsplash.jpg') center/cover no-repeat;opacity:.16}
+  .final .fr{position:absolute;inset:30px;border:1px solid var(--line)}
+  .final .wrap{position:relative;z-index:2;padding:120px 30px}
+  .final h2{font-size:52px;color:var(--cream);margin-bottom:16px}
+  .final h2 em{font-style:italic;color:var(--gold2)}
+  .final p{color:var(--dmuted);font-size:18px;margin-bottom:34px;max-width:560px;margin-left:auto;margin-right:auto}
+  .final .num{font-size:26px;color:var(--gold2);font-family:'Playfair Display',serif;display:inline-block;margin-top:20px;letter-spacing:1px}
+
+  footer{background:var(--black);border-top:1px solid var(--line);color:#8a7f70;padding:60px 0 30px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:38px}
+  .flogo img{height:64px;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.92}
+  .flogo b{font-family:'Playfair Display',serif;font-size:24px;color:var(--cream)}
+  footer h5{color:var(--gold2);font-size:13px;margin-bottom:16px;letter-spacing:2px;text-transform:uppercase}
+  footer a{display:block;color:#8a7f70;margin-bottom:9px;transition:color .2s}
+  footer a:hover{color:var(--gold2)}
+  .fbot{border-top:1px solid var(--line);padding-top:24px;text-align:center;color:#6b6151;font-size:12.5px;letter-spacing:.5px}
+  @media(max-width:900px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="concept">🎨 <b>Website Redesign Concept</b> for Irwin Roofing — luxury preview using their real logo &amp; photos. Not the live site.</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>DFW RESIDENTIAL &amp; COMMERCIAL ROOFING · PROUDLY ADVOCATING FOR HOMEOWNERS</span>
+    <span>Call <a href="tel:9724152865">972-415-2865</a></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><a href="#" style="display:flex;align-items:center"><img src="https://static.showit.co/400/vl-coEHzSSKx00LHx59HrQ/shared/irwin_roofing_1.png" alt="Irwin Roofing" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><b>Irwin Roofing</b></a></div>
+      <div class="navlinks">
+        <a href="#advocate">The Advantage</a>
+        <a href="#process">Process</a>
+        <a href="#values">Values</a>
+        <a href="#founder">Our Founder</a>
+      </div>
+      <div class="navcta">
+        <span class="num">972-415-2865</span>
+        <a href="#final" class="btn">Free Inspection</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="bg"></div>
+  <div class="veil"></div>
+  <div class="fr"></div>
+  <div class="wrap">
+    <div class="in">
+      <span class="eyebrow">Building Relationships, One Roof at a Time</span>
+      <h1>Roofing Crafted With <em>Integrity</em> &amp; Precision.</h1>
+      <p>DFW's trusted residential &amp; commercial roofing experts. We don't just say you need a roof — we show you the proof, and guide you through every step, insurance claim included.</p>
+      <div class="cta">
+        <a href="#final" class="btn">Request a Free Inspection</a>
+        <a href="tel:9724152865" class="btn btn-out">Call 972-415-2865</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="s"><b data-count="2017" data-plain="1">0</b><span>Established In</span></div>
+    <div class="s"><b data-count="300" data-suffix="+">0</b><span>Residential Roofs</span></div>
+    <div class="s"><b data-count="15" data-suffix="+">0</b><span>Commercial Roofs</span></div>
+    <div class="s"><b data-count="100" data-suffix="%">0</b><span>Customer Focused</span></div>
+  </div>
+</div>
+
+<section class="adv" id="advocate">
+  <div class="wrap">
+    <div class="grid">
+      <div class="imgwrap reveal"><img src="https://static.showit.co/800/C9rLrN8MT46emKIIlYtPqg/shared/ronnie-george-z11gbBo13ro-unsplash.jpg" alt="Premium residential roof by Irwin Roofing"></div>
+      <div class="reveal d2">
+        <span class="eyebrow">Proudly Advocating for Homeowners</span>
+        <h2 class="h2">We Show You the <em>Proof</em>.</h2>
+        <p>Using premium materials and proven techniques, our fully licensed team delivers strong, durable, weather-resistant roofs — with outstanding service at every step.</p>
+        <ul class="ck">
+          <li><span class="i">✦</span> Transparent inspections documented with photos &amp; proof</li>
+          <li><span class="i">✦</span> Expert guidance through your insurance claim</li>
+          <li><span class="i">✦</span> Premium materials — CertainTeed, Owens Corning &amp; more</li>
+          <li><span class="i">✦</span> A Service Maintenance Program for lasting peace of mind</li>
+        </ul>
+        <a href="#final" class="btn" style="margin-top:20px">Work With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proc-sec" id="process">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Leading You Through Each Phase</span>
+      <h2 class="h2">The Irwin Process</h2>
+    </div>
+    <div class="proc">
+      <div class="step reveal d1"><div class="n"></div><h4>Inspection</h4><p>A meticulous evaluation of your roof, gutters, downspouts, windows and screens — every crucial detail examined.</p></div>
+      <div class="step reveal d2"><div class="n"></div><h4>Consultation</h4><p>We review our findings and present your options: repair, replacement, insurance-claim assistance, or maintenance.</p></div>
+      <div class="step reveal d3"><div class="n"></div><h4>Installation</h4><p>A seamless, precise installation from our experienced team — engineered for lasting performance and longevity.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">A Stronger, More Trustworthy Future</span>
+      <h2 class="h2">Our Core Values</h2>
+    </div>
+    <div class="vgrid">
+      <div class="val reveal d1"><div class="ic">🎖️</div><div><h4>Service Above All</h4><p>Going above and beyond — a tribute to the values instilled through a lifetime of service.</p></div></div>
+      <div class="val reveal d2"><div class="ic">⚖️</div><div><h4>Integrity as a Foundation</h4><p>Unwavering commitment to honesty, transparency, and ethical conduct on every job.</p></div></div>
+      <div class="val reveal d1"><div class="ic">✝️</div><div><h4>Faith-Fueled Compassion</h4><p>Extending the same grace, mercy, and care to every client we're privileged to serve.</p></div></div>
+      <div class="val reveal d2"><div class="ic">📈</div><div><h4>Continuous Improvement</h4><p>A relentless commitment to excellence that leaves a legacy of craftsmanship and care.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <div class="wrap">
+    <div class="grid">
+      <div class="ph reveal"><img src="https://static.showit.co/800/xjMaGXTsSAaNcGiu0QuCJQ/shared/sah-07434.jpg" alt="Richard Armenta, Founder & CEO of Irwin Roofing"></div>
+      <div class="reveal d2">
+        <span class="eyebrow">Changing the Image of Our Industry</span>
+        <p class="quote">"We don't just build roofs — we build <span>trust, integrity, and lasting relationships</span> with every client we serve."</p>
+        <p>In every shingle laid and every nail driven, Irwin Roofing is a testament to values built on family, faith, and commitment to service. A roof is more than shelter — it's a symbol of reliability and security.</p>
+        <div class="name">Richard Armenta<small>Founder &amp; Chief Executive Officer</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">In Their Words</span>
+      <h2 class="h2">Relationships That Last</h2>
+    </div>
+    <div class="revgrid">
+      <div class="rev reveal d1"><div class="q">"</div><h4>Very Informative</h4><p>"Doesn't just say 'you need a new roof' — but shows you why with pictures, proof, and helps you through the insurance process."</p></div>
+      <div class="rev reveal d2"><div class="q">"</div><h4>Excellent Team</h4><p>"They care about customer experience and quality of work. Highly recommended!"</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="partners">
+  <div class="ptrack">
+    <img src="https://static.showit.co/400/ucCTORoIREWk2lOSSEmAiA/shared/certainteed-logo-2-removebg-preview.png" alt="CertainTeed">
+    <img src="https://static.showit.co/200/YyPsG_-wRp-B5djlNDn4jw/shared/oc_logo_bw_rgb.png" alt="Owens Corning">
+    <img src="https://static.showit.co/200/cZXUFmaJRKa2PwzUvGneKA/shared/atlas-roofing-logo-modified-removebg-preview.png" alt="Atlas Roofing">
+    <img src="https://static.showit.co/200/2DzbzxJyTNOYXkoHOoOhmA/shared/decra_metal_roofing_2018-modified-removebg-preview.png" alt="DECRA Metal Roofing">
+    <img src="https://static.showit.co/200/pUNhXV3wQQaUb-xe4wu6tQ/shared/bbb-logo.png" alt="BBB Accredited">
+    <img src="https://static.showit.co/400/ucCTORoIREWk2lOSSEmAiA/shared/certainteed-logo-2-removebg-preview.png" alt="CertainTeed">
+    <img src="https://static.showit.co/200/YyPsG_-wRp-B5djlNDn4jw/shared/oc_logo_bw_rgb.png" alt="Owens Corning">
+    <img src="https://static.showit.co/200/cZXUFmaJRKa2PwzUvGneKA/shared/atlas-roofing-logo-modified-removebg-preview.png" alt="Atlas Roofing">
+    <img src="https://static.showit.co/200/2DzbzxJyTNOYXkoHOoOhmA/shared/decra_metal_roofing_2018-modified-removebg-preview.png" alt="DECRA Metal Roofing">
+    <img src="https://static.showit.co/200/pUNhXV3wQQaUb-xe4wu6tQ/shared/bbb-logo.png" alt="BBB Accredited">
+  </div>
+</div>
+
+<section class="final" id="final">
+  <div class="bg"></div>
+  <div class="fr"></div>
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:20px">Crafting Quality, Insuring Peace of Mind</span>
+    <h2>Discover the Irwin <em>Advantage</em>.</h2>
+    <p>Unlock peace of mind for your roof and ensure your property is in expert hands.</p>
+    <a href="tel:9724152865" class="btn">Request a Free Inspection</a>
+    <a href="tel:9724152865" class="num">972-415-2865</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="flogo"><img src="https://static.showit.co/400/vl-coEHzSSKx00LHx59HrQ/shared/irwin_roofing_1.png" alt="Irwin Roofing" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><b style="display:none">Irwin Roofing</b></div>
+        <p style="max-width:360px">Your trusted DFW experts in residential and commercial roofing. Unmatched craftsmanship, reliable service, and a commitment to excellence — building relationships one roof at a time.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="#">Residential Services</a>
+        <a href="#">Commercial Services</a>
+        <a href="#">Our Process</a>
+        <a href="#">About Us</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:9724152865">972-415-2865</a>
+        <a href="#">Richard@irwinroofing.net</a>
+        <a href="#">Mon–Fri 8–8 · Sat 9–2</a>
+      </div>
+    </div>
+    <div class="fbot">Redesign concept prepared for Irwin Roofing · Demo only — not the live website.</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('img').forEach(function(im){
+    function fail(){ im.style.opacity='0'; }
+    im.addEventListener('error',fail);
+    if(im.complete && im.naturalWidth===0) fail();
+  });
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.13});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function up(el){const t=+el.dataset.count,sf=el.dataset.suffix||'',plain=el.dataset.plain;let n=0,st=Math.max(1,Math.round(t/45));const iv=setInterval(()=>{n+=st;if(n>=t){n=t;clearInterval(iv);}el.textContent=(plain?n:n.toLocaleString())+sf;},26);}
+  const so=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){up(e.target);so.unobserve(e.target);}})},{threshold:.6});
+  document.querySelectorAll('.stats b').forEach(el=>so.observe(el));
+</script>
+
+</body>
+</html>
