@@ -60,7 +60,12 @@
   .b1{width:340px;height:340px;background:var(--accent);top:-80px;right:8%;animation:floaty 9s ease-in-out infinite}
   .b2{width:220px;height:220px;background:var(--gold);bottom:-60px;left:12%;animation:floaty 11s ease-in-out infinite reverse}
   .ring{position:absolute;right:-140px;top:50%;transform:translateY(-50%);width:520px;height:520px;border:2px dashed rgba(224,169,46,.18);border-radius:50%;animation:spinSlow 40s linear infinite;z-index:1}
-  .hero .wrap{position:relative;z-index:3;padding:70px 24px;max-width:1000px}
+  .hero-scene{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;z-index:2;pointer-events:none}
+  @keyframes twinkle{0%,100%{opacity:.35}50%{opacity:1}}
+  .hero-scene .win{animation:twinkle 3s ease-in-out infinite}
+  .hero-scene .win:nth-child(3n){animation-delay:1s}
+  .hero-scene .win:nth-child(3n+1){animation-delay:1.8s}
+  .hero .wrap{position:relative;z-index:3;padding:70px 24px 220px;max-width:1000px}
   .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(224,169,46,.14);border:1px solid rgba(224,169,46,.5);color:var(--gold);padding:9px 18px;border-radius:30px;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .7s both}
   .hero h1{font-size:66px;line-height:1;font-weight:900;letter-spacing:-2px;margin-bottom:12px;animation:fadeUp .7s .1s both}
   .rot{color:var(--gold);display:inline-block;min-width:6ch}
@@ -171,6 +176,47 @@
   <div class="blob b1"></div>
   <div class="blob b2"></div>
   <div class="ring"></div>
+  <svg class="hero-scene" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e0a92e" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e0a92e" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#22262c"/><stop offset="1" stop-color="#111316"/>
+      </linearGradient>
+      <linearGradient id="bld2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2b2018"/><stop offset="1" stop-color="#14100c"/>
+      </linearGradient>
+    </defs>
+    <circle cx="1080" cy="150" r="150" fill="url(#sun)"/>
+    <circle cx="1080" cy="150" r="46" fill="#e0a92e" opacity=".85"/>
+    <!-- back buildings -->
+    <rect x="60" y="150" width="150" height="210" fill="url(#bld)"/>
+    <rect x="250" y="110" width="120" height="250" fill="url(#bld)"/>
+    <rect x="1180" y="130" width="150" height="230" fill="url(#bld)"/>
+    <rect x="1330" y="170" width="120" height="190" fill="url(#bld)"/>
+    <!-- crane -->
+    <line x1="430" y1="360" x2="430" y2="70" stroke="#3a2e20" stroke-width="6"/>
+    <line x1="300" y1="82" x2="560" y2="82" stroke="#3a2e20" stroke-width="6"/>
+    <line x1="430" y1="82" x2="360" y2="140" stroke="#c0392b" stroke-width="3"/>
+    <rect x="345" y="140" width="30" height="20" fill="#c0392b"/>
+    <!-- front buildings with flat roofs -->
+    <rect x="410" y="190" width="230" height="170" fill="url(#bld2)"/>
+    <rect x="400" y="182" width="250" height="14" fill="#c0392b"/>
+    <rect x="660" y="150" width="200" height="210" fill="url(#bld)"/>
+    <rect x="652" y="143" width="216" height="12" fill="#e0a92e"/>
+    <rect x="880" y="210" width="190" height="150" fill="url(#bld2)"/>
+    <rect x="872" y="203" width="206" height="12" fill="#c0392b"/>
+    <!-- windows -->
+    <g fill="#e0a92e">
+      <rect class="win" x="440" y="215" width="14" height="18"/><rect class="win" x="470" y="215" width="14" height="18"/><rect class="win" x="500" y="215" width="14" height="18"/>
+      <rect class="win" x="440" y="255" width="14" height="18"/><rect class="win" x="500" y="255" width="14" height="18"/><rect class="win" x="560" y="215" width="14" height="18"/>
+      <rect class="win" x="690" y="180" width="14" height="18"/><rect class="win" x="722" y="180" width="14" height="18"/><rect class="win" x="754" y="180" width="14" height="18"/>
+      <rect class="win" x="690" y="220" width="14" height="18"/><rect class="win" x="786" y="180" width="14" height="18"/><rect class="win" x="722" y="220" width="14" height="18"/>
+      <rect class="win" x="905" y="235" width="14" height="18"/><rect class="win" x="937" y="235" width="14" height="18"/><rect class="win" x="1000" y="235" width="14" height="18"/>
+    </g>
+  </svg>
   <div class="wrap">
     <span class="tag">★ Commercial Roofing Specialists · Forney, TX</span>
     <h1>A Roof Above<br>the <span class="rot" id="rot">Rest.</span></h1>
