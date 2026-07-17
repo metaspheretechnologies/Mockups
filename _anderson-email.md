@@ -2,7 +2,7 @@
 
 **To:** mark@andersonroofstexas.com · Mark Anderson, Owner & President
 **Preview:** https://metaspheretechnologies.github.io/Mockups/anderson-roofing.html
-**Subject:** Rebuilt your homepage with your photos + fixed a duplicate-content SEO issue
+**Subject:** Mark, your homepage prints the same paragraph twice — here's a fix
 
 Hi Mark,
 
@@ -19,7 +19,9 @@ So I built a free redesign concept — modern and animated, using your **real lo
 No cost, no obligation. Worth a quick 10-minute look this week?
 
 Best,
-Danish
-[phone] · [website]
+David Wilson
 
-*Reminder: add your phone/website to the signature; keep it plain-text.*
++14086764069
+[https://metaspheretechnologies.com](https://metaspheretechnologies.com)
+
+*Sent as plain-text for best deliverability.*

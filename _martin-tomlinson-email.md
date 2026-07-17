@@ -19,7 +19,9 @@ So I built a free redesign concept — modern, animated, with a **parallax hero 
 No cost, no obligation. Worth a quick 10-minute look this week?
 
 Best,
-Danish
-[phone] · [website]
+David Wilson
 
-*Reminder: add your phone/website to the signature; keep it plain-text.*
++14086764069
+[https://metaspheretechnologies.com](https://metaspheretechnologies.com)
+
+*Sent as plain-text for best deliverability.*

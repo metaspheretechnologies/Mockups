@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>314 Roofing Solutions — Website Redesign Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#159a4e; --green-d:#0d6e37; --green-dd:#0a4d27; --lime:#37c46e; --char:#14201a; --char-2:#1d2c24;
+    --cream:#f2f8f4; --soft:#eaf4ee; --ink:#182420; --muted:#5c6d64; --line:#dde8e1; --bg:#ffffff;
+    --glass:rgba(255,255,255,.1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--bg);overflow-x:hidden}
+  h1,h2,h3,h4,.h2{font-family:'Outfit','Inter',sans-serif;letter-spacing:-.5px}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .btn{position:relative;display:inline-block;background:var(--green);color:#fff;font-weight:700;padding:16px 32px;border-radius:10px;border:none;cursor:pointer;font-size:15px;overflow:hidden;transition:transform .2s,box-shadow .2s;font-family:'Outfit',sans-serif}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(21,154,78,.4)}
+  .btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .5s}
+  .btn:hover::after{left:130%}
+  .btn-out{background:#fff;color:var(--green-d);border:2px solid var(--line)}
+  .btn-out:hover{border-color:var(--green)}
+  .btn-dark{background:var(--char)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(21,154,78,.4)}70%{box-shadow:0 0 0 16px rgba(21,154,78,0)}}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+  .concept{background:var(--char);color:#bdd3c7;text-align:center;font-size:13px;padding:8px 12px}
+  .concept b{color:var(--lime)}
+
+  .topbar{background:var(--green-dd);color:#c3e2d1;font-size:13px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px;font-weight:500;gap:16px;flex-wrap:wrap}
+  .topbar a{color:#fff;font-weight:700}
+  .topbar .rt{display:flex;gap:20px;align-items:center}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .logo img{height:46px}
+  .navlinks{display:flex;gap:26px;font-weight:600;font-size:14px;color:var(--char)}
+  .navlinks a{position:relative}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--green);transition:width .25s}
+  .navlinks a:hover::after{width:100%}
+  .navcta{display:flex;align-items:center;gap:14px}
+  .navcta .num{font-weight:800;color:var(--green-d);font-size:18px;font-family:'Outfit',sans-serif}
+  @media(max-width:1000px){.navlinks{display:none}.navcta .num{display:none}}
+
+  /* HERO */
+  .hero{background:var(--cream);position:relative;overflow:hidden;padding:0}
+  .hero::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(21,154,78,.12),transparent 70%);top:-200px;right:-150px}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;padding:64px 24px}
+  .hero .rating{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:8px 16px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:22px;box-shadow:0 6px 18px rgba(20,32,26,.06);animation:fadeUp .7s both}
+  .hero .rating .st{color:#f5a623}
+  .hero .rating b{color:var(--green-d)}
+  .hero h1{font-size:52px;line-height:1.03;font-weight:800;color:var(--char);margin-bottom:16px;animation:fadeUp .8s .1s both}
+  .hero h1 span{color:var(--green)}
+  .hero p{font-size:18px;color:var(--muted);max-width:480px;margin-bottom:26px;animation:fadeUp .8s .25s both}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;animation:fadeUp .8s .4s both}
+  .hero .mini{display:flex;gap:22px;flex-wrap:wrap;animation:fadeUp .8s .5s both}
+  .hero .mini div{font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .hero .mini b{color:var(--char)}
+  .lform{background:#fff;border-radius:18px;padding:30px;box-shadow:0 30px 70px rgba(20,32,26,.18);border-top:5px solid var(--green);animation:fadeUp .8s .3s both}
+  .lform h3{font-size:22px;color:var(--char);font-weight:700;margin-bottom:3px}
+  .lform p{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .lform label{font-size:12.5px;font-weight:600;display:block;margin-bottom:5px}
+  .lform input,.lform select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:14px;font-size:14px;font-family:inherit;background:var(--cream);transition:border-color .2s,box-shadow .2s}
+  .lform input:focus,.lform select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(21,154,78,.14)}
+  .lform .btn{width:100%;animation:pulse 2.6s infinite}
+  .lform .tiny{text-align:center;color:var(--muted);font-size:11.5px;margin-top:10px}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding:44px 24px}.hero h1{font-size:38px}}
+
+  /* science band */
+  .science{background:linear-gradient(120deg,var(--char),var(--char-2));color:#fff;position:relative;overflow:hidden}
+  .science .glow{position:absolute;width:400px;height:400px;border-radius:50%;background:var(--green);filter:blur(140px);opacity:.3;top:-120px;left:-80px}
+  .science .grid{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+  .science .imgwrap{border-radius:18px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4);aspect-ratio:1/1;animation:floaty 7s ease-in-out infinite}
+  .science .imgwrap img{width:100%;height:100%;object-fit:cover}
+  .science .big{font-size:64px;font-weight:800;color:var(--lime);font-family:'Outfit',sans-serif;line-height:1;margin-bottom:14px}
+  .science h2{font-size:34px;font-weight:800;line-height:1.15;margin:0 0 16px}
+  .science p{color:#b7cbc0;margin-bottom:20px;max-width:500px}
+  .science .tools{display:flex;gap:10px;flex-wrap:wrap}
+  .science .tool{background:var(--glass);border:1px solid rgba(255,255,255,.14);border-radius:30px;padding:8px 16px;font-size:13px;font-weight:600;color:#dcefe4}
+  @media(max-width:900px){.science .grid{grid-template-columns:1fr}}
+
+  section{padding:78px 0}
+  .eyebrow{color:var(--green);font-weight:700;letter-spacing:2px;font-size:13px;text-transform:uppercase}
+  .center{text-align:center}.center .eyebrow{display:block}
+  .h2{font-size:40px;font-weight:800;color:var(--char);margin:8px 0 14px}
+  .lead{color:var(--muted);max-width:660px;font-size:16px}.center .lead{margin:0 auto 52px}
+
+  /* founder */
+  .founder{background:var(--soft)}
+  .founder .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+  .founder .ph{max-width:340px;margin:0 auto;filter:drop-shadow(0 24px 40px rgba(20,32,26,.2))}
+  .founder h2{font-size:34px;font-weight:800;color:var(--char);line-height:1.12;margin-bottom:16px}
+  .founder h2 span{color:var(--green)}
+  .founder p{color:#3f4f47;margin-bottom:14px;font-size:15.5px}
+  .founder .sig{height:60px;margin-top:8px}
+  @media(max-width:900px){.founder .grid{grid-template-columns:1fr}}
+
+  /* services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .svc{border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+  .svc:hover{transform:translateY(-8px);box-shadow:0 24px 46px rgba(20,32,26,.14)}
+  .svc .imgwrap{height:200px;overflow:hidden}
+  .svc img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .svc:hover img{transform:scale(1.08)}
+  .svc .bd{padding:26px}
+  .svc h4{font-size:22px;color:var(--char);margin-bottom:8px;font-weight:700}
+  .svc p{color:var(--muted);font-size:14.5px;margin-bottom:12px}
+  .svc a{color:var(--green);font-weight:700;font-size:14px}
+  @media(max-width:900px){.services{grid-template-columns:1fr}}
+
+  /* why grid */
+  .why{background:var(--cream)}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .val{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;transition:transform .25s,box-shadow .25s}
+  .val:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,32,26,.1)}
+  .val .ic{width:52px;height:52px;border-radius:14px;background:var(--soft);color:var(--green);display:grid;place-items:center;font-size:24px;margin-bottom:14px}
+  .val h4{color:var(--char);font-size:19px;font-weight:700;margin-bottom:6px}
+  .val p{color:var(--muted);font-size:14.5px}
+  @media(max-width:900px){.vgrid{grid-template-columns:1fr}}
+
+  /* veteran band */
+  .vet{position:relative;color:#fff;overflow:hidden;background:linear-gradient(120deg,var(--green-d),var(--green-dd))}
+  .vet .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+  .vet h2{font-size:34px;font-weight:800;margin-bottom:12px}
+  .vet p{color:#d5ecdd;margin-bottom:20px}
+  .vet .imgwrap{border-radius:16px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.3)}
+  .vet .imgwrap img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+  @media(max-width:900px){.vet .grid{grid-template-columns:1fr}}
+
+  /* reviews highlight */
+  .revhl{background:var(--char);color:#fff;text-align:center}
+  .revhl .big{font-size:72px;font-weight:800;color:var(--lime);font-family:'Outfit',sans-serif;line-height:1;margin-bottom:8px}
+  .revhl .st{color:#f5a623;font-size:26px;margin:6px 0}
+  .revhl p{color:#b7cbc0;max-width:560px;margin:10px auto 26px;font-size:16px}
+
+  /* calculator CTA */
+  .calc{background:var(--soft)}
+  .calc .box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;box-shadow:0 20px 46px rgba(20,32,26,.08)}
+  .calc h2{font-size:32px;font-weight:800;color:var(--char);margin-bottom:8px}
+  .calc p{color:var(--muted);font-size:16px}
+  @media(max-width:760px){.calc .box{grid-template-columns:1fr;text-align:center}}
+
+  footer{background:var(--char);color:#93a89c;padding:54px 0 26px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:38px;margin-bottom:32px}
+  footer .flogo img{height:44px;margin-bottom:14px;filter:brightness(0) invert(1);opacity:.9}
+  footer h5{color:#fff;font-size:16px;margin-bottom:14px;font-family:'Outfit',sans-serif}
+  footer a{display:block;color:#93a89c;margin-bottom:8px;transition:color .2s}
+  footer a:hover{color:var(--lime)}
+  .fbot{border-top:1px solid #26332c;padding-top:20px;text-align:center;color:#6b7f74;font-size:13px}
+  @media(max-width:900px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="concept">🎨 <b>Website Redesign Concept</b> for 314 Roofing Solutions — preview using their real logo &amp; photos. Not the live site.</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🔬 Houston's High-Tech, Data-Driven Roofers · "Just the Facts"</span>
+    <div class="rt"><span>📍 Houston, TX</span><span>Call <a href="tel:8326888363">(832) 688-8363</a></span></div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><a href="#"><img src="https://314roofing.com/wp-content/uploads/2025/07/logo-scaled-1-300x122.webp" alt="314 Roofing Solutions"></a></div>
+      <div class="navlinks">
+        <a href="#science">Our Tech</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why 314</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="navcta">
+        <span class="num">(832) 688-8363</span>
+        <a href="#quote" class="btn">Free Inspection</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="rating"><span class="st">★★★★★</span> <b>1,000+</b> 5-Star Google Reviews</span>
+      <h1>Roofing Backed by <span>Hard Science</span>, Not Guesswork.</h1>
+      <p>Houston's roofer that analyzes your roof with up to 12 high-tech tools, shows you the data, then educates you on your options. True, transparent, pressure-free.</p>
+      <div class="cta">
+        <a href="#quote" class="btn">Get a Free Roof Inspection</a>
+        <a href="#calc" class="btn btn-out">Roof Cost Calculator</a>
+      </div>
+      <div class="mini">
+        <div>🔬 <b>12</b> Inspection Tools</div>
+        <div>🏅 <b>10+</b> Years in Houston</div>
+        <div>☀️ <b>Tesla</b> Solar Roof Certified</div>
+      </div>
+    </div>
+    <div class="lform" id="quote">
+      <h3>Get Your Free Quote</h3>
+      <p>See the data. Know the truth. No pressure.</p>
+      <form onsubmit="event.preventDefault();this.querySelector('.btn').textContent='✔ Request Sent!';">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" required>
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(832) 000-0000" required>
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com" required>
+        <label>Service Needed</label>
+        <select>
+          <option>Free Roof Inspection</option>
+          <option>Roof Replacement</option>
+          <option>Roof Repair</option>
+          <option>Maintenance Service</option>
+          <option>New Construction</option>
+          <option>Tesla Solar Roof</option>
+        </select>
+        <button class="btn" type="submit">Get My Free Inspection →</button>
+        <div class="tiny">🔒 No pressure, ever. Just the facts.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="science" id="science">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="imgwrap reveal"><img src="https://314roofing.com/wp-content/uploads/2025/07/residential-roof-inspection-camera-cypress-tx-768x740.webp" alt="High-tech roof inspection camera"></div>
+      <div class="reveal d2">
+        <span class="eyebrow" style="color:var(--lime)">Our Tools of the Trade</span>
+        <div class="big" data-count="12" data-suffix="">0</div>
+        <h2>High-Tech Tools for a Roof Inspection You Can Trust</h2>
+        <p>Thermal cameras. FLIR moisture meters. High-flying drones. We use up to twelve cutting-edge tools to pinpoint precisely what's happening with your roof — then document it in photos, videos, and reports we review with you.</p>
+        <div class="tools">
+          <span class="tool">🌡️ Thermal Imaging</span>
+          <span class="tool">💧 FLIR Moisture Meters</span>
+          <span class="tool">🚁 Drone Surveys</span>
+          <span class="tool">💨 Smoke Tests</span>
+          <span class="tool">📸 Photo &amp; Video Reports</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal"><img class="ph" src="https://314roofing.com/wp-content/uploads/2025/07/314-roofing-illustration-cypress-custom-roofing-768x1086.webp" alt="Andy Kelly, owner of 314 Roofing, inspecting a roof"></div>
+      <div class="reveal d2">
+        <span class="eyebrow">A Message From Andy Kelly, Owner</span>
+        <h2>We <span>Don't</span> Want You to "Take Our Word For It."</h2>
+        <p>Let's face it — it's tough to trust roofers in Houston. When they inspect your roof, there's no way to know if they're exaggerating problems, or even finding them. You just have to take their word for it.</p>
+        <p>At 314 Roofing, we show you the <b>PROOF</b>. Up to 12 high-tech tools pinpoint every issue, documented in photos and reports we review with you in detail. With hard evidence, you'll know we're recommending the right solution.</p>
+        <img class="sig" src="https://314roofing.com/wp-content/uploads/2025/07/andy-kelly-signature-commercial-roofing-services-cypress-tx-300x129.webp" alt="Andy Kelly signature">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Our Services</span>
+      <h2 class="h2">Roofing &amp; Homebuilding for the Houston Area</h2>
+      <p class="lead">Residential, commercial, and new-home roofing — plus Tesla Solar Roof — all backed by the same transparent, data-driven process.</p>
+    </div>
+    <div class="services">
+      <div class="svc reveal d1"><div class="imgwrap"><img src="https://314roofing.com/wp-content/uploads/2025/07/owens-corning-asphalt-shingle-estate-gray-color-residential-roof-replacement-314-roofing-solutions-cypress-texas-1-768x512.webp" alt="Residential roofing"></div><div class="bd"><h4>Residential Roofing</h4><p>Inspections, repair, replacement &amp; maintenance — with a roof visualization tool to design yours online.</p><a href="#quote">Get Started →</a></div></div>
+      <div class="svc reveal d2"><div class="imgwrap"><img src="https://314roofing.com/wp-content/uploads/2025/07/314-roofing-solutions-commercial-roof-repair-katy-texas-768x576.webp" alt="Commercial roofing"></div><div class="bd"><h4>Commercial Roofing</h4><p>Inspections, repair, replacement &amp; maintenance for Houston-area businesses and standing-seam metal systems.</p><a href="#quote">Get Started →</a></div></div>
+      <div class="svc reveal d3"><div class="imgwrap"><img src="https://314roofing.com/wp-content/uploads/2025/07/314-roofing-solutions-residential-commericial-installation-standing-seam-metal-panels-roof-inspection-the-woodlands-texas-768x576.webp" alt="New home building"></div><div class="bd"><h4>New Home Building</h4><p>Custom and production home roof building for Houston's leading builders — craftsmanship on every job.</p><a href="#quote">Get Started →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 class="h2">Where Going Beyond Is the Bare Minimum</h2>
+    </div>
+    <div class="vgrid">
+      <div class="val reveal d1"><div class="ic">🏆</div><h4>Top-Notch Products</h4><p>Handpicked materials built to withstand Houston's diverse, demanding weather.</p></div>
+      <div class="val reveal d2"><div class="ic">🛠️</div><h4>World-Class Workmanship</h4><p>Experienced pros who leave no stone unturned on any job site.</p></div>
+      <div class="val reveal d3"><div class="ic">🤝</div><h4>Pressure-Free Roofing</h4><p>We listen, answer questions, and give honest recommendations — no hard sell.</p></div>
+      <div class="val reveal d1"><div class="ic">💚</div><h4>Strong Company Values</h4><p>Trust, respect, service, and enthusiasm in everything we do.</p></div>
+      <div class="val reveal d2"><div class="ic">🏘️</div><h4>Community-First Roofers</h4><p>Local initiatives, charity events, and outreach — we invest in Houston.</p></div>
+      <div class="val reveal d3"><div class="ic">🔬</div><h4>Industry-Leading Tools</h4><p>Advanced thermal imaging and smoke tests for precision on every project.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="vet">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color:#c9f0d6">Roof Deployment Program</span>
+        <h2>Giving New Roofs to Houston Veterans in Need</h2>
+        <p>Through Owens Corning's Roof Deployment Program, we volunteer our services to give brand-new roofs to local veterans — for free. As featured by KPRC2 Houston.</p>
+        <a href="#quote" class="btn" style="background:#fff;color:var(--green-d)">Honoring Our Heroes</a>
+      </div>
+      <div class="imgwrap reveal d2"><img src="https://314roofing.com/wp-content/uploads/2025/07/314-roofing-solutions-residential-roof-deployment-project-purple-heart-homes-cypress-texas-300x200.webp" alt="Purple Heart Homes veteran roof project"></div>
+    </div>
+  </div>
+</section>
+
+<section class="revhl" id="reviews">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="big" data-count="1000" data-suffix="+">0</div>
+      <div class="st">★★★★★</div>
+      <h2 style="font-size:32px;font-weight:800">Hear From the 314 Green TEAM</h2>
+      <p>Over a thousand 5-star Google reviews from happy customers — a.k.a. our Green TEAM. See why Houston keeps choosing the roofer that guarantees just the facts.</p>
+      <a href="#quote" class="btn">Join the Green TEAM</a>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="calc">
+  <div class="wrap">
+    <div class="box reveal">
+      <div>
+        <span class="eyebrow">Instant Estimate</span>
+        <h2>Curious What a New Roof Costs?</h2>
+        <p>Use our free Roof Cost Calculator to get a ballpark in minutes — no phone call required.</p>
+      </div>
+      <a href="#quote" class="btn btn-dark" style="white-space:nowrap">Open the Cost Calculator →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="flogo"><img src="https://314roofing.com/wp-content/uploads/2025/07/logo-scaled-1-300x122.webp" alt="314 Roofing Solutions"></div>
+        <p style="max-width:340px">Residential &amp; commercial roof repairs, inspection reports, maintenance plans, and complete replacements for the Houston area. High-tech, transparent, pressure-free.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Residential Roofing</a>
+        <a href="#">Commercial Roofing</a>
+        <a href="#">New Home Building</a>
+        <a href="#">Tesla Solar Roof</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:8326888363">📞 (832) 688-8363</a>
+        <a href="#">📍 6824 N Sam Houston Pkwy W, Houston, TX 77064</a>
+        <a href="#">💚 The 314 Green TEAM</a>
+      </div>
+    </div>
+    <div class="fbot">Redesign concept prepared for 314 Roofing Solutions · Demo only — not the live website.</div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.13});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function up(el){if(el.dataset.text){el.textContent=el.dataset.text;return;}const t=+el.dataset.count,sf=el.dataset.suffix||'';let n=0,st=Math.max(1,Math.round(t/45));const iv=setInterval(()=>{n+=st;if(n>=t){n=t;clearInterval(iv);}el.textContent=n.toLocaleString()+sf;},26);}
+  const so=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){up(e.target);so.unobserve(e.target);}})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>so.observe(el));
+</script>
+
+</body>
+</html>

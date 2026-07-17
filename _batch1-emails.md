@@ -26,8 +26,10 @@ So I built you a free redesign concept that leads with the "Roof Doctor / licens
 No cost, no obligation — easier to show than tell. Free for a 10-minute call this week?
 
 Best,
-Danish
-[phone] · [website]
+David Wilson
+
++14086764069
+[https://metaspheretechnologies.com](https://metaspheretechnologies.com)
 
 ---
 
@@ -50,8 +52,10 @@ I put together a free redesign concept that plays up the Western brand, leads wi
 No charge, no obligation. Worth a quick 10-minute look this week?
 
 Best,
-Danish
-[phone] · [website]
+David Wilson
+
++14086764069
+[https://metaspheretechnologies.com](https://metaspheretechnologies.com)
 
 ---
 
@@ -72,8 +76,10 @@ So I built a free concept of a faster, cleaner rebuild that leads with the Bulle
 No cost, no obligation. Open to a 10-minute walkthrough this week?
 
 Best,
-Danish
-[phone] · [website]
+David Wilson
+
++14086764069
+[https://metaspheretechnologies.com](https://metaspheretechnologies.com)
 
 ---
-*Reminder: add your phone/website to each signature. Keep emails plain-text for deliverability.*
+*Sent as plain-text for best deliverability.*
