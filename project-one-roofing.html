@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project One Roofing — Website Redesign Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#f48c04; --orange-d:#d97706; --orange-l:#fff4e5; --navy:#141a24; --navy-2:#1d2632; --navy-d:#0d1219;
+    --ink:#1c222b; --muted:#63707f; --line:#e7ebf0; --soft:#f5f7fa; --cream:#fbfcfe; --bg:#ffffff; --glass:rgba(255,255,255,.1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--bg);overflow-x:hidden}
+  h1,h2,h3,h4,.h2{font-weight:800;letter-spacing:-.6px}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .btn{position:relative;display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:16px 32px;border-radius:12px;border:none;cursor:pointer;font-size:15px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(244,140,4,.42)}
+  .btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .5s}
+  .btn:hover::after{left:130%}
+  .btn-dark{background:var(--navy);color:#fff}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.45);color:#fff}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  .concept{background:var(--navy);color:#c3ccd8;text-align:center;font-size:13px;padding:8px 12px}
+  .concept b{color:var(--orange)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--navy);letter-spacing:-.5px}
+  .logo .dot{width:13px;height:13px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px var(--orange-l)}
+  .navlinks{display:flex;gap:28px;font-weight:600;font-size:14px;color:var(--navy)}
+  .navlinks a{position:relative}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--orange);transition:width .25s}
+  .navlinks a:hover::after{width:100%}
+  .btn-sm{padding:11px 22px;font-size:14px}
+  @media(max-width:960px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{position:relative;color:#fff;overflow:hidden;padding:0;background:var(--navy-d);min-height:640px;display:flex;align-items:center}
+  .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1760067537293-6b30141d6a52?auto=format&fit=crop&w=1700&q=70') center/cover no-repeat}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(13,18,25,.92),rgba(13,18,25,.6) 55%,rgba(244,140,4,.28))}
+  .hero .wrap{position:relative;z-index:3;display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center;padding:76px 24px}
+  .badge{display:inline-flex;align-items:center;gap:9px;background:var(--glass);border:1px solid rgba(255,255,255,.22);padding:9px 17px;border-radius:40px;font-size:12.5px;font-weight:700;color:#fff;margin-bottom:22px;animation:fadeUp .7s both}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+  .hero h1{font-size:58px;line-height:1.02;font-weight:800;margin-bottom:16px;animation:fadeUp .8s .1s both}
+  .hero h1 span{color:var(--orange)}
+  .hero p{font-size:18px;color:#ccd4de;max-width:490px;margin-bottom:26px;animation:fadeUp .8s .25s both}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s .4s both}
+  .lform{background:#fff;color:var(--ink);border-radius:18px;padding:30px;box-shadow:0 30px 70px rgba(0,0,0,.45);border-top:5px solid var(--orange);animation:fadeUp .8s .3s both}
+  .lform h3{font-size:22px;color:var(--navy);font-weight:800;margin-bottom:3px}
+  .lform p{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .lform label{font-size:12.5px;font-weight:600;display:block;margin-bottom:5px}
+  .lform input,.lform select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:14px;font-size:14px;font-family:inherit;background:var(--soft);transition:border-color .2s,box-shadow .2s}
+  .lform input:focus,.lform select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(244,140,4,.15)}
+  .lform .btn{width:100%}
+  .lform .tiny{text-align:center;color:var(--muted);font-size:11.5px;margin-top:10px}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding:50px 24px}.hero h1{font-size:38px}}
+
+  /* stats */
+  .stats{background:var(--navy);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+  .stats .s{padding:36px 18px;border-right:1px solid #ffffff14}
+  .stats .s:last-child{border-right:none}
+  .stats b{display:block;font-size:40px;color:var(--orange);font-weight:800;line-height:1}
+  .stats span{font-size:12.5px;color:#a8b3c1;letter-spacing:.5px;text-transform:uppercase;margin-top:8px;display:block}
+  @media(max-width:820px){.stats .wrap{grid-template-columns:1fr 1fr}.stats .s:nth-child(2){border-right:none}}
+
+  section{padding:88px 0}
+  .eyebrow{color:var(--orange-d);font-weight:700;letter-spacing:2px;font-size:13px;text-transform:uppercase}
+  .center{text-align:center}.center .eyebrow{display:block}
+  .h2{font-size:42px;color:var(--navy);margin:8px 0 14px;line-height:1.05}
+  .lead{color:var(--muted);max-width:660px;font-size:16px}.center .lead{margin:0 auto 50px}
+
+  /* states toggle (clean) */
+  .states{background:var(--soft)}
+  .states .box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:44px;box-shadow:0 18px 44px rgba(20,26,36,.06);text-align:center}
+  .st-toggle{display:inline-flex;background:var(--soft);border:1px solid var(--line);border-radius:40px;padding:6px;margin:8px 0 26px}
+  .st-btn{padding:12px 32px;border-radius:40px;border:none;background:transparent;color:var(--muted);font-weight:700;font-size:15px;cursor:pointer;transition:.25s;font-family:inherit}
+  .st-btn.active{background:var(--orange);color:#fff}
+  .st-panel{display:none;max-width:640px;margin:0 auto;animation:fadeUp .5s both}
+  .st-panel.show{display:block}
+  .st-panel h3{font-size:26px;color:var(--navy);margin-bottom:10px}
+  .st-panel h3 span{color:var(--orange)}
+  .st-panel p{color:var(--muted);font-size:16px}
+  .st-panel .areas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .st-panel .areas span{background:var(--orange-l);color:var(--orange-d);padding:8px 16px;border-radius:30px;font-size:13px;font-weight:700}
+
+  /* services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .svc:hover{transform:translateY(-8px);box-shadow:0 22px 44px rgba(20,26,36,.1);border-color:var(--orange)}
+  .svc .ic{width:58px;height:58px;border-radius:14px;background:var(--orange-l);color:var(--orange-d);display:grid;place-items:center;font-size:26px;margin-bottom:16px}
+  .svc h4{font-size:20px;color:var(--navy);margin-bottom:8px;font-weight:800}
+  .svc p{color:var(--muted);font-size:14.5px}
+  @media(max-width:900px){.services{grid-template-columns:1fr}}
+
+  /* photo feature */
+  .feat{background:var(--cream)}
+  .feat .grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .feat .imgwrap{border-radius:18px;overflow:hidden;box-shadow:0 24px 50px rgba(20,26,36,.16);aspect-ratio:4/3;background:linear-gradient(150deg,var(--navy-2),var(--orange-d))}
+  .feat .imgwrap img{width:100%;height:100%;object-fit:cover}
+  .feat h2{font-size:38px;color:var(--navy);line-height:1.08;margin-bottom:16px}
+  .feat h2 span{color:var(--orange)}
+  .feat p{color:var(--muted);margin-bottom:14px;font-size:16px}
+  .feat .ck{list-style:none;margin-top:6px}
+  .feat .ck li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-weight:600;color:var(--navy)}
+  .feat .ck li:last-child{border-bottom:none}
+  .feat .ck .i{color:var(--orange);font-weight:800}
+  @media(max-width:900px){.feat .grid{grid-template-columns:1fr}}
+
+  /* process */
+  .proc{background:var(--navy);color:#fff}
+  .proc .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}
+  .pstep{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:34px;transition:transform .25s,border-color .25s}
+  .pstep:hover{transform:translateY(-8px);border-color:var(--orange)}
+  .pstep .n{width:50px;height:50px;border-radius:14px;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:800;font-size:20px;margin-bottom:16px}
+  .pstep h4{font-size:21px;margin-bottom:8px}
+  .pstep p{color:#a8b3c1;font-size:15px}
+  @media(max-width:900px){.proc .steps{grid-template-columns:1fr}}
+
+  .final{position:relative;color:#fff;text-align:center;overflow:hidden;background:linear-gradient(120deg,var(--orange),var(--orange-d))}
+  .final .wrap{position:relative;z-index:2;padding:84px 24px}
+  .final h2{font-size:44px;margin-bottom:12px}
+  .final p{font-size:18px;margin-bottom:26px;opacity:.92}
+  .final .num{font-size:26px;font-weight:800;display:block;margin-top:16px}
+
+  footer{background:var(--navy-d);color:#93a0b0;padding:52px 0 26px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:38px;margin-bottom:32px}
+  .flogo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:22px;margin-bottom:14px}
+  .flogo .dot{width:12px;height:12px;border-radius:50%;background:var(--orange)}
+  footer h5{color:#fff;font-size:15px;margin-bottom:14px}
+  footer a{display:block;color:#93a0b0;margin-bottom:8px;transition:color .2s}
+  footer a:hover{color:var(--orange)}
+  .fbot{border-top:1px solid #1e2833;padding-top:20px;text-align:center;color:#6b7889;font-size:13px}
+  @media(max-width:900px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="concept">🎨 <b>Website Redesign Concept</b> for Project One Roofing — preview in their brand color with stock imagery (swap for your own). Not the live site.</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><span class="dot"></span> Project One</div>
+      <div class="navlinks">
+        <a href="#states">Where We Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">Our Process</a>
+        <a href="#why">Why Us</a>
+      </div>
+      <a href="#quote" class="btn btn-sm">Free Estimate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="bg"></div>
+  <div class="veil"></div>
+  <div class="wrap">
+    <div>
+      <span class="badge"><span class="dot"></span> Roofing Contractor · Texas &amp; Colorado</span>
+      <h1>Your Roof.<br>Our <span>#1 Project.</span></h1>
+      <p>A full, dedicated crew and a single-minded focus on quality — across Texas and Colorado. Storm restoration, replacements, and repairs done right the first time.</p>
+      <div class="cta">
+        <a href="#quote" class="btn">Get a Free Estimate</a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="lform" id="quote">
+      <h3>Get a Free Estimate</h3>
+      <p>No pressure — just an honest plan for your roof.</p>
+      <form onsubmit="event.preventDefault();this.querySelector('.btn').textContent='✔ Request Sent!';">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" required>
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Best number to reach you" required>
+        <label>State</label>
+        <select><option>Texas</option><option>Colorado</option></select>
+        <label>Service Needed</label>
+        <select>
+          <option>Free Roof Inspection</option>
+          <option>Storm / Hail Damage</option>
+          <option>Roof Replacement</option>
+          <option>Roof Repair</option>
+          <option>Commercial Roofing</option>
+        </select>
+        <button class="btn" type="submit">Request My Free Estimate →</button>
+        <div class="tiny">🔒 Serving Texas &amp; Colorado · No obligation.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="s"><b data-count="2" data-suffix="">0</b><span>States Served</span></div>
+    <div class="s"><b data-count="30" data-suffix="+">0</b><span>Team Members</span></div>
+    <div class="s"><b data-text="Free">—</b><span>Roof Inspections</span></div>
+    <div class="s"><b data-text="In-House">—</b><span>Crews, Not Subs</span></div>
+  </div>
+</div>
+
+<section class="states" id="states">
+  <div class="wrap">
+    <div class="box reveal">
+      <span class="eyebrow">Two States, One Standard</span>
+      <div class="st-toggle">
+        <button class="st-btn active" data-st="tx">🤠 Texas</button>
+        <button class="st-btn" data-st="co">🏔️ Colorado</button>
+      </div>
+      <div class="st-panel show" data-panel="tx">
+        <h3>Roofing Across <span>Texas</span></h3>
+        <p>From East Texas to the Dallas–Fort Worth metroplex and beyond, our Texas crews handle storm damage, replacements, and repairs with the same dedicated focus on every home.</p>
+        <div class="areas"><span>East Texas</span><span>Dallas–Fort Worth</span><span>Tyler</span><span>Surrounding Areas</span></div>
+      </div>
+      <div class="st-panel" data-panel="co">
+        <h3>Roofing Across <span>Colorado</span></h3>
+        <p>Colorado's hail and wind are relentless. Our Colorado teams specialize in storm restoration and insurance-backed replacements across the Front Range and beyond.</p>
+        <div class="areas"><span>Front Range</span><span>Denver Metro</span><span>Storm Restoration</span><span>Surrounding Areas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="h2">Full-Service Roofing</h2>
+      <p class="lead">Residential and commercial — one experienced team for every project, in both states.</p>
+    </div>
+    <div class="services">
+      <div class="svc reveal d1"><div class="ic">🏠</div><h4>Roof Replacement</h4><p>Quality materials and a clean, worry-free install when it's time for a new roof.</p></div>
+      <div class="svc reveal d2"><div class="ic">🌩️</div><h4>Storm &amp; Hail Damage</h4><p>Fast, thorough storm restoration — with the insurance claim handled for you.</p></div>
+      <div class="svc reveal d3"><div class="ic">🔧</div><h4>Roof Repair</h4><p>Prompt, expert repairs for leaks and damage before they get expensive.</p></div>
+      <div class="svc reveal d1"><div class="ic">🏢</div><h4>Commercial Roofing</h4><p>Reliable roof systems and maintenance for businesses and properties.</p></div>
+      <div class="svc reveal d2"><div class="ic">🔍</div><h4>Free Inspections</h4><p>An honest, no-pressure assessment of exactly where your roof stands.</p></div>
+      <div class="svc reveal d3"><div class="ic">🛡️</div><h4>Insurance Claims</h4><p>We know the storm-claim process and make it simple in both TX &amp; CO.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="feat">
+  <div class="wrap">
+    <div class="grid">
+      <div class="imgwrap reveal"><img src="https://images.unsplash.com/photo-1778164909438-c27c813cb480?auto=format&fit=crop&w=1200&q=70" alt="New roof installation"></div>
+      <div class="reveal d2">
+        <span class="eyebrow">Built Right</span>
+        <h2>Our Own Crews. <span>No Shortcuts.</span></h2>
+        <p>With a 30+ person team, we bring our own dedicated crews to every job — not subcontractors. That means tighter quality control, cleaner jobsites, and a finish we're proud to put our name on.</p>
+        <ul class="ck">
+          <li><span class="i">✔</span> Dedicated in-house crews in Texas &amp; Colorado</li>
+          <li><span class="i">✔</span> Premium materials &amp; manufacturer warranties</li>
+          <li><span class="i">✔</span> Storm &amp; insurance-claim specialists</li>
+          <li><span class="i">✔</span> Meticulous cleanup on every project</li>
+        </ul>
+        <a href="#quote" class="btn" style="margin-top:14px">Get a Free Estimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proc" id="process">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow" style="color:var(--orange)">The Project One Way</span>
+      <h2 class="h2" style="color:#fff">How We Make Your Roof #1</h2>
+    </div>
+    <div class="steps">
+      <div class="pstep reveal d1"><div class="n">1</div><h4>Inspect &amp; Document</h4><p>A detailed inspection with photos and a clear report — you'll see exactly what we see.</p></div>
+      <div class="pstep reveal d2"><div class="n">2</div><h4>Plan &amp; Advocate</h4><p>We walk you through your options and advocate for your insurance claim when there's storm damage.</p></div>
+      <div class="pstep reveal d3"><div class="n">3</div><h4>Build &amp; Guarantee</h4><p>A clean, precise installation from our own crews — done right and built to last.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:var(--soft)">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Why Project One</span>
+      <h2 class="h2">A Bigger Team, A Singular Focus</h2>
+      <p class="lead">Large enough to move fast on any job, focused enough to treat your roof like it's the only one that matters.</p>
+    </div>
+    <div class="services">
+      <div class="svc reveal d1"><div class="ic">👷</div><h4>30+ Person Crew</h4><p>Dedicated in-house teams — not subcontractors — on every project.</p></div>
+      <div class="svc reveal d2"><div class="ic">📍</div><h4>Two-State Reach</h4><p>Crews and local presence in both Texas and Colorado.</p></div>
+      <div class="svc reveal d3"><div class="ic">⭐</div><h4>Quality-Obsessed</h4><p>Clean jobsites, careful craftsmanship, and a finish worth our name.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Let's Make Your Roof Project One.</h2>
+    <p>Free estimates across Texas &amp; Colorado — no pressure, just a plan.</p>
+    <a href="#quote" class="btn btn-light">Get a Free Estimate</a>
+    <a href="#quote" class="num">📋 Request Yours Today</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="flogo"><span class="dot"></span> Project One Roofing</div>
+        <p style="max-width:340px">Full-service residential &amp; commercial roofing across Texas and Colorado. Storm restoration, replacements, repairs and inspections — your roof, our #1 project.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Roof Replacement</a>
+        <a href="#">Storm &amp; Hail Damage</a>
+        <a href="#">Roof Repair</a>
+        <a href="#">Commercial Roofing</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="#">✉️ shiloh@projectoneroofing.com</a>
+        <a href="#">📍 Texas &amp; Colorado</a>
+        <a href="#quote">📋 Request a Free Estimate</a>
+      </div>
+    </div>
+    <div class="fbot">Redesign concept prepared for Project One Roofing · Demo only — not the live website.</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('img').forEach(function(im){
+    function fail(){ im.style.opacity='0'; }
+    im.addEventListener('error',fail);
+    if(im.complete && im.naturalWidth===0) fail();
+  });
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.13});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function up(el){if(el.dataset.text){el.textContent=el.dataset.text;return;}const t=+el.dataset.count,sf=el.dataset.suffix||'';let n=0,st=Math.max(1,Math.round(t/40));const iv=setInterval(()=>{n+=st;if(n>=t){n=t;clearInterval(iv);}el.textContent=n+sf;},44);}
+  const so=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){up(e.target);so.unobserve(e.target);}})},{threshold:.6});
+  document.querySelectorAll('.stats b').forEach(el=>so.observe(el));
+  document.querySelectorAll('.st-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.st-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const st=b.dataset.st;
+      document.querySelectorAll('.st-panel').forEach(function(p){p.classList.toggle('show',p.dataset.panel===st);});
+    });
+  });
+</script>
+
+</body>
+</html>
